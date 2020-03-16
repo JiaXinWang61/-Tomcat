@@ -15,13 +15,15 @@ public class MyRequest {
         int len = 0;
         //定义请求的变量
         String str = null;
+
         if ((len = inputStream.read(buffer)) > 0) {
             str = new String(buffer, 0, len);
-            String data = str.split("\n")[0];
-            String[] params = data.split(" ");
-            this.requestMethod = params[0];
-            this.requestUrl = params[1];
         }
+        //GET /HTTP/1.1
+            String data = str.split("\n")[0];
+        String[] params = data.split(" ");
+        this.requestMethod = params[0];
+        this.requestUrl = params[1];
     }
 
     public String getRequestMethod() {
